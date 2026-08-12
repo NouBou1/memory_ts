@@ -1,0 +1,16 @@
+node_modules/
+dist/
+*.local
+
+.env
+.env.*
+!.env.example
+
+.vscode/*
+!.vscode/extensions.json
+.idea/
+.DS_Store
+Thumbs.db
+
+*.log
+npm-debug.log*
