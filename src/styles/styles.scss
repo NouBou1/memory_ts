@@ -27,10 +27,11 @@ body {
 
     &--back {
         transform: rotateY(180deg);
-     
+        
     }
 
     &.is-flipped .card__inner {
         transform: rotateY(180deg);
+        background-color: red;
     }
 }
