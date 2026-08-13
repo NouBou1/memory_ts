@@ -5,26 +5,25 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Memory</title>
+  <link rel="preload" href="/fonts/almarai-400.woff2" as="font" type="font/woff2" crossorigin />
+  <link rel="preload" href="/fonts/almarai-700.woff2" as="font" type="font/woff2" crossorigin />
+  <link rel="preload" href="/fonts/almarai-800.woff2" as="font" type="font/woff2" crossorigin />
+  <link rel="preload" href="/fonts/red-rose.woff2" as="font" type="font/woff2" crossorigin />
 </head>
 
-<body>
-  <header class="header">
-    <h1 class="header__title">Memory</h1>
-  </header>
+<body class="page page--dark">
+  <main class="home">
+    <p class="home__kicker">It's play time.</p>
+    <h1 class="home__title">Ready to play?</h1>
 
-  <main class="main">
-    <section id="field" class="field" aria-label="Spielfeld">
-      <button class="card" type="button">
-        <div class="card__inner">
-          <div class="card__face card__face--front"></div>
-          <div class="card__face card__face--back"></div>
-        </div>
-      </button>
-    </section>
-
+    <a class="button" href="/settings.html">
+      <span class="button__icon" aria-hidden="true"></span>
+      <span class="button__label">Play</span>
+      <span class="button__arrow" aria-hidden="true">&rarr;</span>
+    </a>
   </main>
 
-  <script type="module" src="/src/main.ts"></script>
+  <script type="module" src="/src/home.ts"></script>
 </body>
 
 </html>
