@@ -1,4 +1,4 @@
-import '@/styles/main.scss';
+import './styles/styles.scss';
 
 const board = document.querySelector<HTMLDivElement>('#board');
 

@@ -12,7 +12,38 @@
   "devDependencies": {
     "@types/node": "^26.2.0",
     "sass": "^1.102.0",
-    "typescript": "^5.7.0",
-    "vite": "^7.0.0"
-  }
+    "typescript": "^5.9.3",
+    "vite": "^7.3.6"
+  },
+  "description": "",
+  "main": "index.js",
+  "dependencies": {
+    "chokidar": "^5.0.0",
+    "detect-libc": "^2.1.2",
+    "esbuild": "^0.28.2",
+    "fdir": "^6.5.0",
+    "immutable": "^5.1.9",
+    "is-extglob": "^2.1.1",
+    "is-glob": "^4.0.3",
+    "nanoid": "^3.3.18",
+    "node-addon-api": "^7.1.1",
+    "picocolors": "^1.1.1",
+    "picomatch": "^4.0.5",
+    "postcss": "^8.5.26",
+    "readdirp": "^5.1.1",
+    "rollup": "^4.62.4",
+    "source-map-js": "^1.2.1",
+    "tinyglobby": "^0.2.17",
+    "undici-types": "^8.3.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/NouBou1/memory_ts.git"
+  },
+  "keywords": [],
+  "author": "",
+  "bugs": {
+    "url": "https://github.com/NouBou1/memory_ts/issues"
+  },
+  "homepage": "https://github.com/NouBou1/memory_ts#readme"
 }
