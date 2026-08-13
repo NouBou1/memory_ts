@@ -1,37 +1,62 @@
-body {
-    background-color: blue;
+@font-face {
+    font-family: 'Almarai';
+    font-style: normal;
+    font-weight: 400;
+    font-display: block;
+    src: url('/fonts/almarai-400.woff2') format('woff2');
 }
 
-.card {
-    height: 100px;
-    width: 100px;
-    aspect-ratio: 1/1;
-    background-color: transparent;
-    border: none;
+@font-face {
+    font-family: 'Almarai';
+    font-style: normal;
+    font-weight: 700;
+    font-display: block;
+    src: url('/fonts/almarai-700.woff2') format('woff2');
+}
 
+@font-face {
+    font-family: 'Almarai';
+    font-style: normal;
+    font-weight: 800;
+    font-display: block;
+    src: url('/fonts/almarai-800.woff2') format('woff2');
+}
 
-    &__inner {
-        position: relative;
-        height: 100%;
-        width: 100%;
-        transform-style: preserve-3d;
-        transition: all 300ms ease-in-out;
-    }
+@font-face {
+    font-family: 'Red Rose';
+    font-style: normal;
+    font-weight: 300 700;
+    font-display: block;
+    src: url('/fonts/red-rose.woff2') format('woff2');
+}
 
-    &__face {
-        position: absolute;
-        inset: 0;
-        background-color: black;
-        backface-visibility: hidden;
-    }
+:root {
+    --color-dark: #303131;
+    --color-yellow: #f0ea6e;
+    --color-yellow-hover: #e4de5f;
+    --color-text-light: #ffffff;
+    --color-text-dark: #26262a;
+    --font-base: 'Almarai', system-ui, -apple-system, 'Segoe UI', sans-serif;
+    --font-display: 'Red Rose', var(--font-base);
+    --player-blue: #2d9cdb;
+    --player-orange: #f2994a;
+}
 
-    &--back {
-        transform: rotateY(180deg);
-        
-    }
+* {
+    box-sizing: border-box;
+}
 
-    &.is-flipped .card__inner {
-        transform: rotateY(180deg);
-        background-color: red;
-    }
+[hidden] {
+    display: none !important;
+}
+
+body {
+    margin: 0;
+    min-height: 100vh;
+    font-family: var(--font-base);
+}
+
+.page--dark {
+    background-color: var(--color-dark);
+    color: var(--color-text-light);
 }
