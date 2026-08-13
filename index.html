@@ -1,19 +1,30 @@
 <!doctype html>
 <html lang="de">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Memory</title>
-    <script type="module" src="/src/main.ts"></script>  </head>
-  <body>
-    <header class="header">
-      <h1 class="header__title">Memory</h1>
-    </header>
 
-    <main class="main">
-      <div id="board" class="board" aria-label="Spielfeld"></div>
-    </main>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Memory</title>
+</head>
 
- 
-  </body>
+<body>
+  <header class="header">
+    <h1 class="header__title">Memory</h1>
+  </header>
+
+  <main class="main">
+    <section id="field" class="field" aria-label="Spielfeld">
+      <button class="card" type="button">
+        <div class="card__inner">
+          <div class="card__face card__face--front"></div>
+          <div class="card__face card__face--back"></div>
+        </div>
+      </button>
+    </section>
+
+  </main>
+
+  <script type="module" src="/src/main.ts"></script>
+</body>
+
 </html>
