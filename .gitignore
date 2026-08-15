@@ -14,3 +14,6 @@ Thumbs.db
 
 *.log
 npm-debug.log*
+
+# Screenshot der Figma-Datei, kein Asset - noch nicht entschieden, ob er weg kann
+src/assets/icons/image.png
