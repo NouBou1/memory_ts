@@ -1,0 +1,87 @@
+<!doctype html>
+<html lang="de">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Memory</title>
+  <link rel="preload" href="/fonts/almarai-400.woff2" as="font" type="font/woff2" crossorigin />
+  <link rel="preload" href="/fonts/almarai-700.woff2" as="font" type="font/woff2" crossorigin />
+  <link rel="preload" href="/fonts/almarai-800.woff2" as="font" type="font/woff2" crossorigin />
+  <link rel="preload" href="/fonts/red-rose.woff2" as="font" type="font/woff2" crossorigin />
+</head>
+
+<body class="page page--game">
+  <main class="game">
+    <header id="topbar" class="topbar">
+      <div class="score">
+        <span class="score__item">
+          <span class="score__pawn score__pawn--blue" aria-hidden="true"></span>
+          <output id="score-blue" class="score__value">0</output>
+        </span>
+        <span class="score__item">
+          <span class="score__pawn score__pawn--orange" aria-hidden="true"></span>
+          <output id="score-orange" class="score__value">0</output>
+        </span>
+      </div>
+
+      <p class="topbar__current">
+        Current player:
+        <span id="current-player" class="score__pawn score__pawn--blue" aria-hidden="true"></span>
+      </p>
+
+      <button id="exit" class="exit" type="button">
+        <span class="exit__icon" aria-hidden="true"></span>
+        Exit game
+      </button>
+    </header>
+
+    <section id="field" class="field" aria-label="Spielfeld"></section>
+
+    <section id="gameover" class="endscreen" hidden>
+      <h2 class="endscreen__title">Game over</h2>
+      <p class="endscreen__label">Final score</p>
+      <div class="score">
+        <span class="score__item">
+          <span class="score__pawn score__pawn--blue" aria-hidden="true"></span>
+          <output id="final-blue" class="score__value">0</output>
+        </span>
+        <span class="score__item">
+          <span class="score__pawn score__pawn--orange" aria-hidden="true"></span>
+          <output id="final-orange" class="score__value">0</output>
+        </span>
+      </div>
+    </section>
+
+    <section id="result" class="endscreen" hidden>
+      <div id="confetti" class="confetti" aria-hidden="true"></div>
+      <p id="result-label" class="endscreen__label">The winner is</p>
+      <h2 id="result-title" class="endscreen__title">Blue Player</h2>
+      <div id="result-art" class="endscreen__art" aria-hidden="true"></div>
+      <a class="endscreen__back" href="/index.html">Home</a>
+    </section>
+  </main>
+
+  <dialog id="exit-dialog" class="modal">
+    <p class="modal__title">Are you sure you want to quit the game?</p>
+    <div class="modal__actions">
+      <button id="exit-cancel" class="modal__button modal__button--solid" type="button">
+        No, back to game
+      </button>
+      <a class="modal__button modal__button--ghost" href="/index.html">Yes, quit game</a>
+    </div>
+  </dialog>
+
+  <template id="card-template">
+    <button class="card" type="button">
+      <div class="card__inner">
+        <div class="card__face card__face--front"></div>
+        <div class="card__face card__face--back"></div>
+      </div>
+    </button>
+  </template>
+
+  <script type="module" src="/src/main.ts"></script>
+</body>
+
+</html>
