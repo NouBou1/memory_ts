@@ -21,19 +21,25 @@ function init() {
   updatePreview();
 
   if (formRef instanceof HTMLFormElement && startRef instanceof HTMLButtonElement) {
-    formRef.addEventListener('change', () => {
-      readChoice(formRef);
-      updateSummary();
-      updatePreview();
-      startRef.disabled = !isComplete(choice);
-    });
+    bindForm(formRef, startRef);
+  }
+}
 
-    startRef.addEventListener('click', () => {
-      if (isComplete(choice)) {
-        saveSettings(choice);
-        window.location.href = '/game.html';
-      }
-    });
+function bindForm(formRef: HTMLFormElement, startRef: HTMLButtonElement) {
+  formRef.addEventListener('change', () => {
+    readChoice(formRef);
+    updateSummary();
+    updatePreview();
+    startRef.disabled = !isComplete(choice);
+  });
+
+  startRef.addEventListener('click', startGame);
+}
+
+function startGame() {
+  if (isComplete(choice)) {
+    saveSettings(choice);
+    window.location.href = '/game.html';
   }
 }
 
@@ -43,15 +49,9 @@ function readChoice(formRef: HTMLFormElement) {
   const player = data.get('player');
   const size = Number(data.get('size'));
 
-  if (isThemeId(theme)) {
-    choice.theme = theme;
-  }
-  if (isPlayerColor(player)) {
-    choice.player = player;
-  }
-  if (isBoardSize(size)) {
-    choice.size = size;
-  }
+  choice.theme = isThemeId(theme) ? theme : choice.theme;
+  choice.player = isPlayerColor(player) ? player : choice.player;
+  choice.size = isBoardSize(size) ? size : choice.size;
 }
 
 function updateSummary() {
@@ -83,6 +83,6 @@ function setImage(id: string, source: string) {
   }
 }
 
-function capitalize(value: string) {
+function capitalize(value: string): string {
   return value.charAt(0).toUpperCase() + value.slice(1);
 }

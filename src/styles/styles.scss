@@ -50,6 +50,18 @@
     display: none !important;
 }
 
+.visually-hidden {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    margin: -1px;
+    padding: 0;
+    border: 0;
+    overflow: hidden;
+    clip-path: inset(50%);
+    white-space: nowrap;
+}
+
 body {
     margin: 0;
     min-height: 100vh;
@@ -689,7 +701,7 @@ body {
         height: 100%;
         width: 100%;
         transform-style: preserve-3d;
-        transition: all 300ms ease-in-out;
+        transition: transform 300ms ease-in-out;
     }
 
     &__face {

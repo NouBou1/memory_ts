@@ -11,7 +11,7 @@ export interface GameSettings {
 
 const STORAGE_KEY = 'memory-settings';
 
-export function saveSettings(settings: GameSettings): void {
+export function saveSettings(settings: GameSettings) {
   sessionStorage.setItem(STORAGE_KEY, JSON.stringify(settings));
 }
 
@@ -21,12 +21,20 @@ export function loadSettings(): GameSettings | null {
     return null;
   }
 
-  const parsed = JSON.parse(raw) as Partial<GameSettings>;
-  if (isThemeId(parsed.theme) && isPlayerColor(parsed.player) && isBoardSize(parsed.size)) {
-    return { theme: parsed.theme, player: parsed.player, size: parsed.size };
-  }
+  const parsed = parseSettings(raw);
+  return parsed && isGameSettings(parsed) ? parsed : null;
+}
 
-  return null;
+function parseSettings(raw: string): Partial<GameSettings> | null {
+  try {
+    return JSON.parse(raw) as Partial<GameSettings>;
+  } catch {
+    return null;
+  }
+}
+
+function isGameSettings(value: Partial<GameSettings>): value is GameSettings {
+  return isThemeId(value.theme) && isPlayerColor(value.player) && isBoardSize(value.size);
 }
 
 export function isThemeId(value: unknown): value is ThemeId {

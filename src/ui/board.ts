@@ -1,6 +1,6 @@
 import type { Card, GameState } from '../types/card';
 
-export function renderBoard(fieldRef: HTMLElement, state: GameState): void {
+export function renderBoard(fieldRef: HTMLElement, state: GameState) {
   const templateRef = document.getElementById('card-template');
   if (templateRef instanceof HTMLTemplateElement) {
     const columns = columnsFor(state.cards.length);
@@ -12,7 +12,7 @@ export function renderBoard(fieldRef: HTMLElement, state: GameState): void {
   }
 }
 
-export function syncCard(fieldRef: HTMLElement, card: Card): void {
+export function syncCard(fieldRef: HTMLElement, card: Card) {
   const cardRef = fieldRef.querySelector<HTMLButtonElement>(`[data-id="${card.id}"]`);
   if (cardRef) {
     cardRef.classList.toggle('is-flipped', card.isFlipped || card.isMatched);
