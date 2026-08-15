@@ -49,7 +49,12 @@ function initExitDialog() {
 
 function applyTheme() {
   const [cardWidth, cardHeight] = THEME.cardSize;
+  const [iconWidth, iconHeight] = THEME.playerIcon.size;
   const style = document.body.style;
+
+  style.setProperty('--player-icon', `url("${THEME.playerIcon.src}")`);
+  style.setProperty('--player-icon-width', `${iconWidth}px`);
+  style.setProperty('--player-icon-height', `${iconHeight}px`);
 
   style.setProperty('--bg-from', THEME.background[0]);
   style.setProperty('--bg-to', THEME.background[1]);

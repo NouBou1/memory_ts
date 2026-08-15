@@ -41,6 +41,8 @@ import gmBack from '../assets/images/cards/gaming/back.svg';
 import cvPreview from '../assets/images/themes/code-vibes.svg';
 import gmPreview from '../assets/images/themes/gaming.svg';
 import trophy from '../assets/images/winner/trophy.svg';
+import chessPawn from '../assets/icons/chess_pawn.svg';
+import playerLabel from '../assets/images/label.svg';
 
 export type ThemeId = 'code-vibes' | 'gaming';
 
@@ -57,6 +59,7 @@ export interface Theme {
   readonly winnerUppercase: boolean;
   readonly endButton: { readonly label: string; readonly style: 'solid' | 'ghost' };
   readonly cardSize: readonly [number, number];
+  readonly playerIcon: { readonly src: string; readonly size: readonly [number, number] };
   readonly motifs: readonly string[];
 }
 
@@ -74,6 +77,7 @@ export const THEMES: Record<ThemeId, Theme> = {
     winnerUppercase: true,
     endButton: { label: 'Back to start', style: 'solid' },
     cardSize: [120, 120],
+    playerIcon: { src: playerLabel, size: [24, 20] },
     motifs: [
       cv01, cv02, cv03, cv04, cv05, cv06, cv07, cv08, cv09,
       cv10, cv11, cv12, cv13, cv14, cv15, cv16, cv17, cv18,
@@ -92,6 +96,7 @@ export const THEMES: Record<ThemeId, Theme> = {
     winnerUppercase: false,
     endButton: { label: 'Home', style: 'ghost' },
     cardSize: [105, 120],
+    playerIcon: { src: chessPawn, size: [22, 27] },
     motifs: [
       gm01, gm02, gm03, gm04, gm05, gm06, gm07, gm08, gm09,
       gm10, gm11, gm12, gm13, gm14, gm15, gm16, gm17, gm18,
