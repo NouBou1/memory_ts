@@ -1,0 +1,59 @@
+.page--game {
+    height: 100dvh;
+    overflow: hidden;
+    background-image: linear-gradient(221deg, var(--bg-from, #303131), var(--bg-to, #6d6d6d));
+    color: var(--color-text-light);
+}
+
+.game {
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+    height: 100%;
+    max-width: 1440px;
+    margin: 0 auto;
+    padding: 32px 40px;
+}
+
+.topbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 24px;
+    padding: 16px 24px;
+    border-radius: 16px;
+    background-color: rgb(255 255 255 / 12%);
+
+    &__current {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        margin: 0;
+        font-family: var(--font-display);
+        font-size: 26px;
+        font-weight: 400;
+        line-height: 100%;
+        color: #ffffff;
+    }
+}
+
+.field {
+    --gap-x: 16px;
+    --gap-y: 24px;
+    --avail-h: calc(100dvh - 184px);
+    --avail-w: calc(min(100vw, 1440px) - 80px);
+    --card-height: min(
+        var(--card-max-height, 120px),
+        calc((var(--avail-h) - (var(--rows, 4) - 1) * var(--gap-y)) / var(--rows, 4)),
+        calc((var(--avail-w) - (var(--columns, 4) - 1) * var(--gap-x)) / var(--columns, 4) / var(--card-ratio-num, 1))
+    );
+
+    display: grid;
+    grid-template-columns: repeat(var(--columns, 4), auto);
+    column-gap: var(--gap-x);
+    row-gap: var(--gap-y);
+    justify-content: center;
+    align-content: center;
+    flex: 1;
+    min-height: 0;
+}

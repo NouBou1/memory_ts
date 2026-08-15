@@ -1,0 +1,52 @@
+.home {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 24px;
+    min-height: 100vh;
+    padding: 0 10vw;
+    overflow: hidden;
+
+    &::before {
+        content: '';
+        position: absolute;
+        left: -60px;
+        bottom: -80px;
+        width: 620px;
+        height: 700px;
+        background-image: url('../../assets/icons/stadia_controller.svg');
+        background-repeat: no-repeat;
+        background-size: contain;
+        background-position: bottom left;
+        pointer-events: none;
+    }
+
+    >* {
+        position: relative;
+        z-index: 1;
+    }
+
+    &__kicker {
+        margin: 0;
+        font-size: 48px;
+        line-height: 1;
+        align-self: flex-start;
+        padding-left: 175px;
+    }
+
+    &__title {
+        margin: 0;
+        font-family: var(--font-display);
+        font-size: clamp(48px, 9.72vw, 140px);
+        font-weight: 700;
+        line-height: 1;
+        letter-spacing: 0;
+    }
+
+    .button {
+        align-self: center;
+        margin-top: 56px;
+    }
+}

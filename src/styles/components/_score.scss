@@ -1,0 +1,42 @@
+.score {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    padding: 8px 16px;
+    border-radius: 12px;
+    background-color: #f6f1f3;
+    color: var(--color-text-dark);
+
+    &__item {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+    }
+
+    &__value {
+        font-family: var(--font-display);
+        font-size: 26px;
+        font-weight: 700;
+    }
+
+    &__pawn {
+        width: var(--player-icon-width, 22px);
+        height: var(--player-icon-height, 27px);
+        mask-image: var(--player-icon);
+        mask-size: contain;
+        mask-repeat: no-repeat;
+        mask-position: center;
+        -webkit-mask-image: var(--player-icon);
+        -webkit-mask-size: contain;
+        -webkit-mask-repeat: no-repeat;
+        -webkit-mask-position: center;
+    }
+
+    &__pawn--blue {
+        background-color: var(--player-blue);
+    }
+
+    &__pawn--orange {
+        background-color: var(--player-orange);
+    }
+}

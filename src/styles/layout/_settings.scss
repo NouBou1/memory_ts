@@ -1,0 +1,205 @@
+.settings {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 48px 40px;
+    color: var(--color-text-dark);
+
+    &__title {
+        position: relative;
+        display: inline-block;
+        margin: 0 0 48px;
+        padding-bottom: 20px;
+        font-family: var(--font-display);
+        font-size: 48px;
+        font-weight: 700;
+
+        &::before {
+            content: '';
+            position: absolute;
+            left: -22px;
+            bottom: -5px;
+            width: 14px;
+            height: 14px;
+            background-color: var(--color-yellow);
+            transform: rotate(45deg);
+        }
+
+        &::after {
+            content: '';
+            position: absolute;
+            left: -15px;
+            bottom: 0;
+            width: 265px;
+            height: 5px;
+            background-color: var(--color-yellow);
+        }
+    }
+
+    &__body {
+        display: grid;
+        grid-template-columns: 1fr minmax(0, 460px);
+        gap: 48px;
+        align-items: start;
+    }
+
+    &__form {
+        display: flex;
+        flex-direction: column;
+        gap: 40px;
+    }
+
+    &__side {
+        display: flex;
+        flex-direction: column;
+        gap: 24px;
+    }
+}
+
+.option {
+    border: none;
+    margin: 0;
+    padding: 0;
+
+    &__title {
+        padding: 0 0 12px;
+        font-size: 24px;
+        font-weight: 700;
+    }
+
+    &__icon {
+        display: inline-block;
+        width: 27px;
+        height: 27px;
+        margin-right: 10px;
+        vertical-align: -6px;
+        background-repeat: no-repeat;
+        background-size: contain;
+        background-position: center;
+    }
+
+    &__icon--theme {
+        background-image: url('../../assets/icons/palette.svg');
+    }
+
+    &__icon--player {
+        background-image: url('../../assets/icons/chess_pawn.svg');
+    }
+
+    &__icon--size {
+        background-image: url('../../assets/icons/style.svg');
+    }
+
+    &__row {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        padding: 6px 0 6px 24px;
+        cursor: pointer;
+    }
+
+    &__input {
+        display: grid;
+        place-content: center;
+        width: 20px;
+        height: 20px;
+        margin: 0;
+        border: 2px solid var(--color-text-dark);
+        border-radius: 50%;
+        appearance: none;
+        cursor: pointer;
+
+        &::after {
+            content: '';
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background-color: var(--color-text-dark);
+            transform: scale(0);
+            transition: transform 120ms ease-in-out;
+        }
+
+        &:checked::after {
+            transform: scale(1);
+        }
+
+        &:focus-visible {
+            outline: 2px solid var(--color-yellow);
+            outline-offset: 2px;
+        }
+    }
+
+    &__label {
+        font-size: 18px;
+    }
+
+    &__input:checked + &__label {
+        position: relative;
+        text-shadow: 0.4px 0 0 currentColor;
+    }
+
+    &__input:checked + &__label::after {
+        content: '';
+        position: absolute;
+        left: calc(100% + 12px);
+        top: 50%;
+        width: 56px;
+        height: 4px;
+        margin-top: -2px;
+        background-color: var(--color-yellow);
+    }
+
+    &__input:checked + &__label::before {
+        content: '';
+        position: absolute;
+        left: calc(100% + 63px);
+        top: 50%;
+        width: 10px;
+        height: 10px;
+        margin-top: -5px;
+        background-color: var(--color-yellow);
+        transform: rotate(45deg);
+    }
+}
+
+.preview {
+    display: block;
+    width: 100%;
+    max-width: 460px;
+    aspect-ratio: 460 / 412;
+    height: auto;
+}
+
+.summary {
+    display: flex;
+    align-items: center;
+    gap: 24px;
+    width: calc(100% + 240px);
+    align-self: flex-end;
+    height: 80px;
+    padding: 0 16px 0 24px;
+    background-color: #f7f7f7;
+
+    &__item {
+        display: flex;
+        align-items: center;
+        gap: 24px;
+        font-size: 20px;
+        line-height: 100%;
+        color: #303131;
+        white-space: nowrap;
+    }
+
+    &__item+&__item::before {
+        content: '';
+        width: 56px;
+        height: 8px;
+        margin: 0 -15px;
+        background-color: #f0ea6e;
+        transform: rotate(-70.67deg);
+    }
+
+    .button {
+        margin-left: auto;
+        flex-shrink: 0;
+    }
+}

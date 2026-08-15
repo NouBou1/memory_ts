@@ -1,0 +1,27 @@
+@media (prefers-reduced-motion: reduce) {
+    .confetti img {
+        animation: none;
+    }
+
+    .button,
+    .button__icon,
+    .button__arrow,
+    .button__arrow::before,
+    .button__arrow::after,
+    .card,
+    .exit,
+    .modal__button,
+    .endscreen__button {
+        transition: none;
+    }
+
+    .button:hover:not(:disabled),
+    .button:hover:not(:disabled) .button__icon,
+    .button:hover:not(:disabled) .button__arrow,
+    .card:hover:not(:disabled):not(.is-flipped),
+    .exit:hover,
+    .modal__button:hover,
+    .endscreen__button:hover {
+        transform: none;
+    }
+}

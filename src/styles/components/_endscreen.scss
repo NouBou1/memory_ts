@@ -1,0 +1,135 @@
+.endscreen {
+    position: relative;
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 0;
+    text-align: center;
+
+    &__title {
+        margin: 0 0 59px;
+        color: var(--accent, #4dd5bc);
+        font-family: var(--font-display);
+        font-size: 56px;
+        font-weight: 700;
+    }
+
+    &__title--big {
+        font-size: 96px;
+        letter-spacing: 0.04em;
+    }
+
+    &__title--blue {
+        color: var(--player-blue);
+    }
+
+    &__title--orange {
+        color: var(--player-orange);
+    }
+
+    &__label {
+        margin: 0 0 19px;
+        font-family: var(--font-display);
+        font-size: 24px;
+    }
+
+    &__art {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: min(364px, 40vh);
+        margin-bottom: 62px;
+    }
+
+    &__image {
+        height: 100%;
+        width: auto;
+    }
+
+    &__art--pawn {
+        width: min(200px, 30vh);
+        mask-image: url('../../assets/icons/chess_pawn.svg');
+        mask-size: contain;
+        mask-repeat: no-repeat;
+        mask-position: center;
+        -webkit-mask-image: url('../../assets/icons/chess_pawn.svg');
+        -webkit-mask-size: contain;
+        -webkit-mask-repeat: no-repeat;
+        -webkit-mask-position: center;
+    }
+
+    &__art--blue {
+        background-color: var(--player-blue);
+    }
+
+    &__art--orange {
+        background-color: var(--player-orange);
+    }
+
+    &__actions {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 24px;
+    }
+
+    &__button {
+        position: relative;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        border: none;
+        background-color: transparent;
+        border-radius: 8px;
+        color: var(--color-text-light);
+        font-family: var(--font-display);
+        text-decoration: none;
+        cursor: pointer;
+        transition: background-color 150ms ease-out, border-color 150ms ease-out,
+            transform 150ms ease-out, box-shadow 150ms ease-out;
+
+        &:hover {
+            transform: translateY(-2px);
+        }
+
+        &:focus-visible {
+            outline: 2px solid var(--color-yellow);
+            outline-offset: 3px;
+        }
+    }
+
+    &__button--ghost {
+        min-width: 110px;
+        height: 45px;
+        padding: 0 20px;
+        border: 2px solid var(--accent, #4dd5bc);
+        font-size: 20px;
+
+        &:hover {
+            background-color: color-mix(in srgb, var(--accent, #4dd5bc) 22%, transparent);
+            box-shadow: 0 8px 18px rgb(0 0 0 / 25%),
+                0 0 0 4px color-mix(in srgb, var(--accent, #4dd5bc) 20%, transparent);
+        }
+    }
+
+    &__button--solid {
+        height: 62px;
+        padding: 0 28px;
+        border: none;
+        background-color: var(--accent-dark, #286f62);
+        font-size: 24px;
+        font-weight: 700;
+
+        &:hover {
+            background-color: color-mix(in srgb, var(--accent, #4dd5bc) 30%, var(--accent-dark, #286f62));
+            box-shadow: 0 10px 22px rgb(0 0 0 / 30%);
+        }
+    }
+
+    &__button:active {
+        transform: translateY(0);
+        box-shadow: 0 2px 6px rgb(0 0 0 / 25%);
+    }
+}
