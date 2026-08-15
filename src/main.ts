@@ -21,6 +21,7 @@ init();
 function init() {
   applyTheme();
   initExitDialog();
+  initReplay();
 
   const fieldRef = document.getElementById('field');
   if (fieldRef) {
@@ -34,6 +35,49 @@ function init() {
       }
     });
   }
+}
+
+function initReplay() {
+  document.getElementById('replay')?.addEventListener('click', restartGame);
+}
+
+function restartGame() {
+  state = createGame(THEME, SIZE, START_PLAYER);
+
+  const fieldRef = document.getElementById('field');
+  if (fieldRef) {
+    renderBoard(fieldRef, state);
+  }
+
+  resetEndscreen();
+  updateTopbar();
+
+  toggle('result', false);
+  toggle('gameover', false);
+  toggle('topbar', true);
+  toggle('field', true);
+}
+
+function resetEndscreen() {
+  document
+    .getElementById('result-title')
+    ?.classList.remove(
+      'endscreen__title--big',
+      'endscreen__title--blue',
+      'endscreen__title--orange',
+    );
+
+  const artRef = document.getElementById('result-art');
+  if (artRef) {
+    artRef.classList.remove(
+      'endscreen__art--pawn',
+      'endscreen__art--blue',
+      'endscreen__art--orange',
+    );
+    artRef.replaceChildren();
+  }
+
+  document.getElementById('confetti')?.replaceChildren();
 }
 
 function initExitDialog() {
@@ -64,10 +108,16 @@ function applyTheme() {
   style.setProperty('--accent', THEME.accent);
   style.setProperty('--accent-dark', THEME.accentDark);
 
-  const backRef = document.querySelector('.endscreen__back');
-  if (backRef) {
-    backRef.textContent = THEME.endButton.label;
-    backRef.classList.add(`endscreen__back--${THEME.endButton.style}`);
+  const homeRef = document.getElementById('go-home');
+  if (homeRef) {
+    homeRef.textContent = THEME.endButton.label;
+    homeRef.classList.add(`endscreen__button--${THEME.endButton.style}`);
+  }
+
+  const replayRef = document.getElementById('replay');
+  if (replayRef) {
+    const variant = THEME.endButton.style === 'solid' ? 'ghost' : 'solid';
+    replayRef.classList.add(`endscreen__button--${variant}`);
   }
 }
 
