@@ -86,20 +86,6 @@ body {
         pointer-events: none;
     }
 
-    &::after {
-        content: '';
-        position: absolute;
-        left: -160px;
-        bottom: -140px;
-        width: 820px;
-        height: 820px;
-        background-image: radial-gradient(circle at center,
-            rgb(240 234 110 / 30%) 0%,
-            rgb(240 234 110 / 15%) 50%,
-            rgb(240 234 110 / 0%) 100%);
-        pointer-events: none;
-    }
-
     >* {
         position: relative;
         z-index: 1;
