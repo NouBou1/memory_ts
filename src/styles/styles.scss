@@ -118,17 +118,21 @@ body {
     display: inline-flex;
     align-items: center;
     gap: 24px;
-    padding: 20px;
+    padding: 24px 20px;
     border: none;
     background-color: var(--color-yellow);
-    color: var(--color-text-dark);
-    font-size: 24px;
-    font-weight: 600;
+    color: var(--color-dark);
+    font-family: var(--font-display);
+    font-size: 40px;
+    font-weight: 700;
+    line-height: 1.25;
     text-decoration: none;
     cursor: pointer;
-    transition: background-color 150ms ease-out, transform 150ms ease-out, box-shadow 150ms ease-out;
+    transition: background-color 150ms ease-out, transform 150ms ease-out,
+        box-shadow 150ms ease-out, padding-inline 150ms ease-out;
 
     &:hover:not(:disabled) {
+        padding-inline: 28px;
         background-color: var(--color-yellow-hover);
         transform: translateY(-2px);
         box-shadow: 0 8px 18px rgb(0 0 0 / 25%);
@@ -160,12 +164,49 @@ body {
     }
 
     &__arrow {
-        font-size: 28px;
+        position: relative;
+        display: inline-block;
+        width: 34px;
+        height: 40px;
+        font-size: 32px;
         transition: transform 150ms ease-out;
     }
 
     &:hover:not(:disabled) &__arrow {
         transform: translateX(6px);
+    }
+
+    &__arrow::before,
+    &__arrow::after {
+        content: '\2192';
+        position: absolute;
+        inset: 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        line-height: 1;
+        transition: opacity 130ms ease-out, transform 130ms ease-out;
+    }
+
+    &__arrow::before {
+        transition-delay: 130ms;
+    }
+
+    &__arrow::after {
+        font-size: 52px;
+        opacity: 0;
+        transform: translateX(-6px);
+    }
+
+    &:hover:not(:disabled) &__arrow::before {
+        opacity: 0;
+        transition-delay: 0ms;
+    }
+
+    &:hover:not(:disabled) &__arrow::after {
+        opacity: 1;
+        transform: translateX(0);
+        transition-delay: 130ms;
     }
 }
 
@@ -174,7 +215,12 @@ body {
     height: 49px;
     padding: 0 20px;
     font-size: 18px;
+    line-height: 1;
     white-space: nowrap;
+
+    &:hover:not(:disabled) {
+        padding-inline: 20px;
+    }
 
     &:disabled {
         background-color: #e6e3d6;
@@ -488,6 +534,23 @@ body {
     font-family: var(--font-display);
     font-size: 26px;
     text-decoration: none;
+    transition: background-color 150ms ease-out, box-shadow 150ms ease-out, transform 150ms ease-out;
+
+    &:hover {
+        background-color: #ed5565;
+        box-shadow: 0 8px 18px rgb(237 85 101 / 30%);
+        transform: translateY(-2px);
+    }
+
+    &:active {
+        transform: translateY(0);
+        box-shadow: 0 2px 6px rgb(237 85 101 / 30%);
+    }
+
+    &:focus-visible {
+        outline: 2px solid var(--color-yellow);
+        outline-offset: 3px;
+    }
 
     &__icon {
         display: none;
@@ -533,16 +596,43 @@ body {
         line-height: 40px;
         text-decoration: none;
         cursor: pointer;
+        transition: background-color 150ms ease-out, color 150ms ease-out,
+            transform 150ms ease-out, box-shadow 150ms ease-out;
+
+        &:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 16px rgb(237 27 118 / 30%);
+        }
+
+        &:focus-visible {
+            outline: 2px solid #ed1b76;
+            outline-offset: 3px;
+        }
     }
 
     &__button--solid {
         background-color: #ed1b76;
         color: #ffffff;
+
+        &:hover {
+            background-color: #c9155f;
+            border-color: #c9155f;
+        }
     }
 
     &__button--ghost {
         background-color: transparent;
         color: #ed1b76;
+
+        &:hover {
+            background-color: #ed1b76;
+            color: #ffffff;
+        }
+    }
+
+    &__button:active {
+        transform: translateY(0);
+        box-shadow: 0 2px 6px rgb(237 27 118 / 30%);
     }
 }
 
@@ -646,6 +736,28 @@ body {
 @media (prefers-reduced-motion: reduce) {
     .confetti img {
         animation: none;
+    }
+
+    .button,
+    .button__icon,
+    .button__arrow,
+    .button__arrow::before,
+    .button__arrow::after,
+    .card,
+    .exit,
+    .modal__button,
+    .endscreen__back {
+        transition: none;
+    }
+
+    .button:hover:not(:disabled),
+    .button:hover:not(:disabled) .button__icon,
+    .button:hover:not(:disabled) .button__arrow,
+    .card:hover:not(:disabled):not(.is-flipped),
+    .exit:hover,
+    .modal__button:hover,
+    .endscreen__back:hover {
+        transform: none;
     }
 }
 
@@ -765,6 +877,17 @@ body {
         color: var(--color-text-light);
         font-family: var(--font-display);
         text-decoration: none;
+        transition: background-color 150ms ease-out, border-color 150ms ease-out,
+            transform 150ms ease-out, box-shadow 150ms ease-out;
+
+        &:hover {
+            transform: translateY(-2px);
+        }
+
+        &:focus-visible {
+            outline: 2px solid var(--color-yellow);
+            outline-offset: 3px;
+        }
     }
 
     &__back--ghost {
@@ -772,6 +895,12 @@ body {
         height: 45px;
         border: 2px solid var(--accent, #4dd5bc);
         font-size: 20px;
+
+        &:hover {
+            background-color: color-mix(in srgb, var(--accent, #4dd5bc) 22%, transparent);
+            box-shadow: 0 8px 18px rgb(0 0 0 / 25%),
+                0 0 0 4px color-mix(in srgb, var(--accent, #4dd5bc) 20%, transparent);
+        }
     }
 
     &__back--solid {
@@ -781,5 +910,15 @@ body {
         background-color: var(--accent-dark, #286f62);
         font-size: 24px;
         font-weight: 700;
+
+        &:hover {
+            background-color: color-mix(in srgb, var(--accent, #4dd5bc) 30%, var(--accent-dark, #286f62));
+            box-shadow: 0 10px 22px rgb(0 0 0 / 30%);
+        }
+    }
+
+    &__back:active {
+        transform: translateY(0);
+        box-shadow: 0 2px 6px rgb(0 0 0 / 25%);
     }
 }
