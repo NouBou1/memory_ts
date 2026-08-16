@@ -1,3 +1,5 @@
+@use '../abstracts/mixins' as *;
+
 * {
     box-sizing: border-box;
 }
@@ -7,15 +9,7 @@
 }
 
 .visually-hidden {
-    position: absolute;
-    width: 1px;
-    height: 1px;
-    margin: -1px;
-    padding: 0;
-    border: 0;
-    overflow: hidden;
-    clip-path: inset(50%);
-    white-space: nowrap;
+    @include visually-hidden;
 }
 
 body {

@@ -1,3 +1,5 @@
+@use '../abstracts/breakpoints' as *;
+
 .modal {
     width: min(529px, calc(100vw - 32px));
     max-height: calc(100dvh - 32px);
@@ -7,6 +9,11 @@
     border-radius: 24px;
     background-color: #f6f1f3;
     color: #23434f;
+
+    @include until($mobile) {
+        padding: 28px 20px 24px;
+        border-radius: 16px;
+    }
 
     &::backdrop {
         background-color: rgb(0 0 0 / 45%);
@@ -19,26 +26,45 @@
         font-weight: 700;
         line-height: 130%;
         text-align: center;
+
+        @include until($mobile) {
+            margin-bottom: 28px;
+            font-size: 22px;
+        }
     }
 
     &__actions {
         display: flex;
         justify-content: center;
         gap: 24px;
+
+        @include until($mobile) {
+            flex-direction: column;
+            gap: 12px;
+        }
     }
 
     &__button {
-        height: 44px;
-        padding: 0 20px;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        min-height: 44px;
+        padding: 8px 20px;
         border: 2px solid #ed1b76;
         border-radius: 8px;
         font-family: var(--font-display);
         font-size: 20px;
-        line-height: 40px;
+        line-height: 1.2;
+        text-align: center;
         text-decoration: none;
         cursor: pointer;
         transition: background-color 150ms ease-out, color 150ms ease-out,
             transform 150ms ease-out, box-shadow 150ms ease-out;
+
+        @include until($mobile) {
+            padding: 0 14px;
+            font-size: 17px;
+        }
 
         &:hover {
             transform: translateY(-2px);

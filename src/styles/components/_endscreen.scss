@@ -1,3 +1,5 @@
+@use '../abstracts/breakpoints' as *;
+
 .endscreen {
     position: relative;
     display: flex;
@@ -6,6 +8,7 @@
     align-items: center;
     justify-content: center;
     min-height: 0;
+    overflow-y: auto;
     text-align: center;
 
     &__title {
@@ -14,11 +17,29 @@
         font-family: var(--font-display);
         font-size: 56px;
         font-weight: 700;
+
+        @include until($tablet) {
+            margin-bottom: 40px;
+            font-size: 42px;
+        }
+
+        @include until($mobile) {
+            margin-bottom: 28px;
+            font-size: 32px;
+        }
     }
 
     &__title--big {
         font-size: 96px;
         letter-spacing: 0.04em;
+
+        @include until($tablet) {
+            font-size: 68px;
+        }
+
+        @include until($mobile) {
+            font-size: 48px;
+        }
     }
 
     &__title--blue {
@@ -33,6 +54,11 @@
         margin: 0 0 19px;
         font-family: var(--font-display);
         font-size: 24px;
+
+        @include until($mobile) {
+            margin-bottom: 12px;
+            font-size: 18px;
+        }
     }
 
     &__art {
@@ -41,6 +67,15 @@
         justify-content: center;
         height: min(364px, 40vh);
         margin-bottom: 62px;
+
+        @include until($tablet) {
+            margin-bottom: 40px;
+        }
+
+        @include until($mobile) {
+            height: min(220px, 30vh);
+            margin-bottom: 28px;
+        }
     }
 
     &__image {
@@ -73,6 +108,12 @@
         align-items: center;
         justify-content: center;
         gap: 24px;
+
+        @include until($mobile) {
+            flex-direction: column;
+            gap: 12px;
+            width: min(280px, 100%);
+        }
     }
 
     &__button {
@@ -98,6 +139,10 @@
             outline: 2px solid var(--color-yellow);
             outline-offset: 3px;
         }
+
+        @include until($mobile) {
+            width: 100%;
+        }
     }
 
     &__button--ghost {
@@ -106,6 +151,11 @@
         padding: 0 20px;
         border: 2px solid var(--accent, #4dd5bc);
         font-size: 20px;
+
+        @include until($mobile) {
+            height: 42px;
+            font-size: 18px;
+        }
 
         &:hover {
             background-color: color-mix(in srgb, var(--accent, #4dd5bc) 22%, transparent);
@@ -121,6 +171,12 @@
         background-color: var(--accent-dark, #286f62);
         font-size: 24px;
         font-weight: 700;
+
+        @include until($mobile) {
+            height: 50px;
+            padding: 0 20px;
+            font-size: 20px;
+        }
 
         &:hover {
             background-color: color-mix(in srgb, var(--accent, #4dd5bc) 30%, var(--accent-dark, #286f62));

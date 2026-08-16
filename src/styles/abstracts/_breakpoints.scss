@@ -1,0 +1,19 @@
+// Start of each range. `until()` styles everything below a breakpoint,
+// `from()` everything at or above it, so the ranges never overlap.
+$mobile-small: 400px;
+$mobile: 600px;
+$tablet: 900px;
+$notebook: 1280px;
+$widescreen: 1600px;
+
+@mixin until($breakpoint) {
+    @media (max-width: ($breakpoint - 0.02px)) {
+        @content;
+    }
+}
+
+@mixin from($breakpoint) {
+    @media (min-width: $breakpoint) {
+        @content;
+    }
+}

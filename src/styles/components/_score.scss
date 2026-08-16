@@ -1,3 +1,5 @@
+@use '../abstracts/breakpoints' as *;
+
 .score {
     display: flex;
     align-items: center;
@@ -7,21 +9,49 @@
     background-color: #f6f1f3;
     color: var(--color-text-dark);
 
+    @include until($tablet) {
+        gap: 12px;
+        padding: 6px 12px;
+    }
+
+    @include until($mobile) {
+        gap: 10px;
+        padding: 6px 8px;
+        border-radius: 10px;
+    }
+
     &__item {
         display: flex;
         align-items: center;
         gap: 8px;
+
+        @include until($mobile) {
+            gap: 6px;
+        }
     }
 
     &__value {
         font-family: var(--font-display);
         font-size: 26px;
         font-weight: 700;
+
+        @include until($tablet) {
+            font-size: 22px;
+        }
+
+        @include until($mobile) {
+            font-size: 18px;
+        }
     }
 
     &__pawn {
-        width: var(--player-icon-width, 22px);
-        height: var(--player-icon-height, 27px);
+        width: calc(var(--player-icon-width, 22px) * var(--pawn-scale, 1));
+        height: calc(var(--player-icon-height, 27px) * var(--pawn-scale, 1));
+        flex-shrink: 0;
+
+        @include until($mobile) {
+            --pawn-scale: 0.8;
+        }
         mask-image: var(--player-icon);
         mask-size: contain;
         mask-repeat: no-repeat;

@@ -1,8 +1,22 @@
+@use '../abstracts/breakpoints' as *;
+
 .settings {
     max-width: 1200px;
     margin: 0 auto;
     padding: 48px 40px;
     color: var(--color-text-dark);
+
+    @include from($widescreen) {
+        max-width: min(1440px, var(--content-max));
+    }
+
+    @include until($notebook) {
+        padding: 40px 32px;
+    }
+
+    @include until($mobile) {
+        padding: 32px 24px;
+    }
 
     &__title {
         position: relative;
@@ -13,6 +27,17 @@
         font-size: 48px;
         font-weight: 700;
 
+        @include until($tablet) {
+            margin-bottom: 32px;
+            font-size: 36px;
+        }
+
+        @include until($mobile) {
+            margin-bottom: 24px;
+            padding-bottom: 14px;
+            font-size: 30px;
+        }
+
         &::before {
             content: '';
             position: absolute;
@@ -22,6 +47,12 @@
             height: 14px;
             background-color: var(--color-yellow);
             transform: rotate(45deg);
+
+            @include until($mobile) {
+                left: -16px;
+                width: 10px;
+                height: 10px;
+            }
         }
 
         &::after {
@@ -32,6 +63,12 @@
             width: 265px;
             height: 5px;
             background-color: var(--color-yellow);
+
+            @include until($mobile) {
+                left: -10px;
+                width: 180px;
+                height: 4px;
+            }
         }
     }
 
@@ -40,18 +77,39 @@
         grid-template-columns: 1fr minmax(0, 460px);
         gap: 48px;
         align-items: start;
+
+        @include from($widescreen) {
+            grid-template-columns: 1fr minmax(0, 560px);
+        }
+
+        @include until($notebook) {
+            gap: 32px;
+        }
+
+        @include until($tablet) {
+            grid-template-columns: 1fr;
+            gap: 40px;
+        }
     }
 
     &__form {
         display: flex;
         flex-direction: column;
         gap: 40px;
+
+        @include until($tablet) {
+            gap: 32px;
+        }
     }
 
     &__side {
         display: flex;
         flex-direction: column;
         gap: 24px;
+
+        @include until($tablet) {
+            align-items: center;
+        }
     }
 }
 
@@ -64,6 +122,10 @@
         padding: 0 0 12px;
         font-size: 24px;
         font-weight: 700;
+
+        @include until($mobile) {
+            font-size: 20px;
+        }
     }
 
     &__icon {
@@ -75,6 +137,12 @@
         background-repeat: no-repeat;
         background-size: contain;
         background-position: center;
+
+        @include until($mobile) {
+            width: 22px;
+            height: 22px;
+            vertical-align: -4px;
+        }
     }
 
     &__icon--theme {
@@ -95,6 +163,11 @@
         gap: 12px;
         padding: 6px 0 6px 24px;
         cursor: pointer;
+
+        @include until($mobile) {
+            gap: 10px;
+            padding: 8px 0 8px 12px;
+        }
     }
 
     &__input {
@@ -107,6 +180,7 @@
         border-radius: 50%;
         appearance: none;
         cursor: pointer;
+        flex-shrink: 0;
 
         &::after {
             content: '';
@@ -130,6 +204,10 @@
 
     &__label {
         font-size: 18px;
+
+        @include until($mobile) {
+            font-size: 16px;
+        }
     }
 
     &__input:checked + &__label {
@@ -146,6 +224,11 @@
         height: 4px;
         margin-top: -2px;
         background-color: var(--color-yellow);
+
+        @include until($mobile) {
+            left: calc(100% + 8px);
+            width: 28px;
+        }
     }
 
     &__input:checked + &__label::before {
@@ -158,6 +241,13 @@
         margin-top: -5px;
         background-color: var(--color-yellow);
         transform: rotate(45deg);
+
+        @include until($mobile) {
+            left: calc(100% + 39px);
+            width: 8px;
+            height: 8px;
+            margin-top: -4px;
+        }
     }
 }
 
@@ -167,6 +257,10 @@
     max-width: 460px;
     aspect-ratio: 460 / 412;
     height: auto;
+
+    @include from($widescreen) {
+        max-width: 560px;
+    }
 }
 
 .summary {
@@ -179,6 +273,25 @@
     padding: 0 16px 0 24px;
     background-color: #f7f7f7;
 
+    @include until($notebook) {
+        width: calc(100% + 120px);
+        gap: 16px;
+        padding: 0 12px 0 16px;
+    }
+
+    @include until($tablet) {
+        width: 100%;
+        align-self: stretch;
+    }
+
+    @include until($mobile) {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 10px;
+        height: auto;
+        padding: 16px;
+    }
+
     &__item {
         display: flex;
         align-items: center;
@@ -187,6 +300,15 @@
         line-height: 100%;
         color: #303131;
         white-space: nowrap;
+
+        @include until($notebook) {
+            gap: 16px;
+            font-size: 18px;
+        }
+
+        @include until($mobile) {
+            font-size: 16px;
+        }
     }
 
     &__item+&__item::before {
@@ -196,10 +318,25 @@
         margin: 0 -15px;
         background-color: #f0ea6e;
         transform: rotate(-70.67deg);
+
+        @include until($notebook) {
+            width: 40px;
+            height: 6px;
+            margin: 0 -11px;
+        }
+
+        @include until($mobile) {
+            display: none;
+        }
     }
 
     .button {
         margin-left: auto;
         flex-shrink: 0;
+
+        @include until($mobile) {
+            margin: 6px 0 0;
+            justify-content: center;
+        }
     }
 }

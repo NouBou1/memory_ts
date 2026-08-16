@@ -1,8 +1,11 @@
+@use '../abstracts/breakpoints' as *;
+
 .exit {
     display: inline-flex;
     align-items: center;
     gap: 12px;
     padding: 12px 20px;
+    white-space: nowrap;
     background-color: transparent;
     cursor: pointer;
     border: 2px solid #ed5565;
@@ -27,6 +30,24 @@
     &:focus-visible {
         outline: 2px solid var(--color-yellow);
         outline-offset: 3px;
+    }
+
+    @include until($tablet) {
+        padding: 8px 14px;
+        border-radius: 10px;
+        font-size: 20px;
+    }
+
+    @include until($mobile) {
+        padding: 6px 10px;
+        border-width: 1px;
+        border-radius: 8px;
+        font-size: 16px;
+    }
+
+    @include until($mobile-small) {
+        padding: 6px 8px;
+        font-size: 14px;
     }
 
     &__icon {

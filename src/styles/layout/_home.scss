@@ -1,11 +1,16 @@
+@use '../abstracts/breakpoints' as *;
+
 .home {
     position: relative;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+    display: grid;
+    grid-template-columns: minmax(0, max-content);
+    align-content: center;
     justify-content: center;
+    justify-items: start;
     gap: 24px;
     min-height: 100vh;
+    max-width: var(--content-max);
+    margin: 0 auto;
     padding: 0 10vw;
     overflow: hidden;
 
@@ -21,6 +26,30 @@
         background-size: contain;
         background-position: bottom left;
         pointer-events: none;
+
+        @include until($notebook) {
+            left: -40px;
+            bottom: -60px;
+            width: min(620px, 60vw);
+            height: min(700px, 70vh);
+        }
+
+        @include until($mobile) {
+            left: -24px;
+            bottom: -30px;
+            width: min(620px, 80vw);
+            height: min(700px, 45vh);
+        }
+    }
+
+    @include until($tablet) {
+        gap: 16px;
+        padding: 0 8vw;
+    }
+
+    @include until($mobile) {
+        gap: 12px;
+        padding: 40px 24px;
     }
 
     >* {
@@ -30,23 +59,21 @@
 
     &__kicker {
         margin: 0;
-        font-size: 48px;
+        font-size: clamp(24px, 5vw, 48px);
         line-height: 1;
-        align-self: flex-start;
-        padding-left: 90px;
     }
 
     &__title {
         margin: 0;
         font-family: var(--font-display);
-        font-size: clamp(48px, 9.72vw, 140px);
+        font-size: clamp(40px, 9.72vw, 140px);
         font-weight: 700;
         line-height: 1;
         letter-spacing: 0;
     }
 
     .button {
-        align-self: center;
-        margin-top: 56px;
+        justify-self: center;
+        margin-top: clamp(24px, 5vw, 56px);
     }
 }

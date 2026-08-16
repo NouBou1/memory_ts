@@ -5,11 +5,11 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Memory</title>
-  <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
-  <link rel="preload" href="/fonts/almarai-400.woff2" as="font" type="font/woff2" crossorigin />
-  <link rel="preload" href="/fonts/almarai-700.woff2" as="font" type="font/woff2" crossorigin />
-  <link rel="preload" href="/fonts/almarai-800.woff2" as="font" type="font/woff2" crossorigin />
-  <link rel="preload" href="/fonts/red-rose.woff2" as="font" type="font/woff2" crossorigin />
+  <link rel="icon" href="./favicon.svg" type="image/svg+xml" />
+  <link rel="preload" href="./fonts/almarai-400.woff2" as="font" type="font/woff2" crossorigin />
+  <link rel="preload" href="./fonts/almarai-700.woff2" as="font" type="font/woff2" crossorigin />
+  <link rel="preload" href="./fonts/almarai-800.woff2" as="font" type="font/woff2" crossorigin />
+  <link rel="preload" href="./fonts/red-rose.woff2" as="font" type="font/woff2" crossorigin />
 </head>
 
 <body class="page page--game">
@@ -29,7 +29,7 @@
       </div>
 
       <p class="topbar__current">
-        Current player:
+        <span class="topbar__label">Current player:</span>
         <span id="current-player" class="score__pawn score__pawn--blue" aria-hidden="true"></span>
       </p>
 
@@ -63,7 +63,7 @@
       <div id="result-art" class="endscreen__art" aria-hidden="true"></div>
       <div class="endscreen__actions">
         <button id="replay" class="endscreen__button" type="button">Play again</button>
-        <a id="go-home" class="endscreen__button" href="/index.html">Home</a>
+        <a id="go-home" class="endscreen__button" href="./index.html">Home</a>
       </div>
     </section>
   </main>
@@ -74,7 +74,7 @@
       <button id="exit-cancel" class="modal__button modal__button--solid" type="button">
         No, back to game
       </button>
-      <a class="modal__button modal__button--ghost" href="/index.html">Yes, quit game</a>
+      <a class="modal__button modal__button--ghost" href="./index.html">Yes, quit game</a>
     </div>
   </dialog>
 
@@ -87,7 +87,7 @@
     </button>
   </template>
 
-  <script type="module" src="/src/main.ts"></script>
+  <script type="module" src="./src/main.ts"></script>
 </body>
 
 </html>

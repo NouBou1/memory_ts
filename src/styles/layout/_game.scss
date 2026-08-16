@@ -1,3 +1,6 @@
+@use '../abstracts/breakpoints' as *;
+@use '../abstracts/mixins' as *;
+
 .page--game {
     height: 100dvh;
     overflow: hidden;
@@ -6,13 +9,45 @@
 }
 
 .game {
+    --board-width: 1440px;
+    --pad-x: 40px;
+    --pad-y: 32px;
+    --gap: 32px;
+    --topbar-h: 90px;
+
     display: flex;
     flex-direction: column;
-    gap: 32px;
+    gap: var(--gap);
     height: 100%;
-    max-width: 1440px;
+    max-width: var(--board-width);
     margin: 0 auto;
-    padding: 32px 40px;
+    padding: var(--pad-y) var(--pad-x);
+
+    @include from($widescreen) {
+        --board-width: var(--content-max);
+        --card-scale: 1.3;
+    }
+
+    @include until($notebook) {
+        --pad-x: 24px;
+        --pad-y: 24px;
+        --gap: 24px;
+        --topbar-h: 82px;
+    }
+
+    @include until($tablet) {
+        --pad-x: 16px;
+        --pad-y: 16px;
+        --gap: 16px;
+        --topbar-h: 72px;
+    }
+
+    @include until($mobile) {
+        --pad-x: 12px;
+        --pad-y: 12px;
+        --gap: 12px;
+        --topbar-h: 64px;
+    }
 }
 
 .topbar {
@@ -24,6 +59,22 @@
     border-radius: 16px;
     background-color: rgb(255 255 255 / 12%);
 
+    @include until($notebook) {
+        gap: 16px;
+        padding: 12px 20px;
+    }
+
+    @include until($tablet) {
+        gap: 12px;
+        padding: 10px 16px;
+        border-radius: 12px;
+    }
+
+    @include until($mobile) {
+        gap: 8px;
+        padding: 8px 10px;
+    }
+
     &__current {
         display: flex;
         align-items: center;
@@ -34,16 +85,27 @@
         font-weight: 400;
         line-height: 100%;
         color: #ffffff;
+
+        @include until($tablet) {
+            gap: 8px;
+            font-size: 20px;
+        }
+    }
+
+    &__label {
+        @include until($mobile) {
+            @include visually-hidden;
+        }
     }
 }
 
 .field {
     --gap-x: 16px;
     --gap-y: 24px;
-    --avail-h: calc(100dvh - 184px);
-    --avail-w: calc(min(100vw, 1440px) - 80px);
+    --avail-h: calc(100dvh - var(--pad-y) * 2 - var(--gap) - var(--topbar-h));
+    --avail-w: calc(min(100vw, var(--board-width)) - var(--pad-x) * 2);
     --card-height: min(
-        var(--card-max-height, 120px),
+        calc(var(--card-max-height, 120px) * var(--card-scale, 1)),
         calc((var(--avail-h) - (var(--rows, 4) - 1) * var(--gap-y)) / var(--rows, 4)),
         calc((var(--avail-w) - (var(--columns, 4) - 1) * var(--gap-x)) / var(--columns, 4) / var(--card-ratio-num, 1))
     );
@@ -56,4 +118,24 @@
     align-content: center;
     flex: 1;
     min-height: 0;
+
+    @include until($notebook) {
+        --gap-x: 12px;
+        --gap-y: 16px;
+    }
+
+    @include until($tablet) {
+        --gap-x: 10px;
+        --gap-y: 12px;
+    }
+
+    @include until($mobile) {
+        --gap-x: 8px;
+        --gap-y: 10px;
+    }
+
+    @include until($mobile-small) {
+        --gap-x: 6px;
+        --gap-y: 8px;
+    }
 }
