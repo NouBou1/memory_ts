@@ -106,20 +106,13 @@ function applyPlayerIcon() {
 }
 
 function applyEndButtons() {
+  const variant = `endscreen__button--${THEME.endButton.style}`;
+  document.getElementById('replay')?.classList.add(variant);
+
   const homeRef = document.getElementById('go-home');
   if (homeRef) {
     homeRef.textContent = THEME.endButton.label;
-    homeRef.classList.add(`endscreen__button--${THEME.endButton.style}`);
-  }
-
-  applyReplayButton();
-}
-
-function applyReplayButton() {
-  const replayRef = document.getElementById('replay');
-  if (replayRef) {
-    const variant = THEME.endButton.style === 'solid' ? 'ghost' : 'solid';
-    replayRef.classList.add(`endscreen__button--${variant}`);
+    homeRef.classList.add(variant);
   }
 }
 
