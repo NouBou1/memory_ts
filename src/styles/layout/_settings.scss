@@ -2,6 +2,7 @@
 
 .settings {
     max-width: 1200px;
+    min-height: calc(100vh - var(--footer-h));
     margin: 0 auto;
     padding: 48px 40px;
     color: var(--color-text-dark);

@@ -50,7 +50,11 @@ function initField() {
 }
 
 function onFieldClick(fieldRef: HTMLElement, event: Event) {
-  const card = (event.target as HTMLElement).closest('.card') as HTMLButtonElement | null;
+  if (!(event.target instanceof HTMLElement)) {
+    return;
+  }
+
+  const card = event.target.closest<HTMLButtonElement>('.card');
   if (card && card.dataset.id) {
     onCardClick(fieldRef, Number(card.dataset.id));
   }

@@ -22,10 +22,14 @@ export function syncCard(fieldRef: HTMLElement, card: Card) {
 }
 
 function createCard(templateRef: HTMLTemplateElement, card: Card, backImage: string): HTMLElement {
-  const clone = templateRef.content.cloneNode(true) as DocumentFragment;
-  const cardRef = clone.querySelector('.card') as HTMLButtonElement;
-  const frontRef = clone.querySelector('.card__face--front') as HTMLElement;
-  const backRef = clone.querySelector('.card__face--back') as HTMLElement;
+  const clone = document.importNode(templateRef.content, true);
+  const cardRef = clone.querySelector<HTMLButtonElement>('.card');
+  const frontRef = clone.querySelector<HTMLElement>('.card__face--front');
+  const backRef = clone.querySelector<HTMLElement>('.card__face--back');
+
+  if (!cardRef || !frontRef || !backRef) {
+    throw new Error('Card template is missing .card, .card__face--front or .card__face--back');
+  }
 
   cardRef.dataset.id = String(card.id);
   frontRef.style.backgroundImage = `url("${backImage}")`;

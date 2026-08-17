@@ -1,0 +1,32 @@
+@use '../abstracts/breakpoints' as *;
+
+.footer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: var(--footer-h);
+    color: inherit;
+
+    &__link {
+        font-size: 14px;
+        color: inherit;
+        opacity: 0.65;
+        text-decoration: none;
+        transition: opacity 120ms ease-in-out;
+
+        @include until($mobile) {
+            font-size: 13px;
+        }
+
+        &:hover {
+            opacity: 1;
+            text-decoration: underline;
+        }
+
+        &:focus-visible {
+            opacity: 1;
+            outline: 2px solid var(--color-yellow);
+            outline-offset: 4px;
+        }
+    }
+}

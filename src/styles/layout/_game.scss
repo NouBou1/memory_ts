@@ -102,7 +102,7 @@
 .field {
     --gap-x: 16px;
     --gap-y: 24px;
-    --avail-h: calc(100dvh - var(--pad-y) * 2 - var(--gap) - var(--topbar-h));
+    --avail-h: calc(100dvh - var(--pad-y) * 2 - var(--gap) * 2 - var(--topbar-h) - var(--footer-h));
     --avail-w: calc(min(100vw, var(--board-width)) - var(--pad-x) * 2);
     --card-height: min(
         calc(var(--card-max-height, 120px) * var(--card-scale, 1)),

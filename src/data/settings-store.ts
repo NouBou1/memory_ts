@@ -22,19 +22,28 @@ export function loadSettings(): GameSettings | null {
   }
 
   const parsed = parseSettings(raw);
-  return parsed && isGameSettings(parsed) ? parsed : null;
+  return isGameSettings(parsed) ? parsed : null;
 }
 
-function parseSettings(raw: string): Partial<GameSettings> | null {
+function parseSettings(raw: string): unknown {
   try {
-    return JSON.parse(raw) as Partial<GameSettings>;
+    return JSON.parse(raw);
   } catch {
     return null;
   }
 }
 
-function isGameSettings(value: Partial<GameSettings>): value is GameSettings {
-  return isThemeId(value.theme) && isPlayerColor(value.player) && isBoardSize(value.size);
+function isGameSettings(value: unknown): value is GameSettings {
+  return (
+    typeof value === 'object' &&
+    value !== null &&
+    'theme' in value &&
+    isThemeId(value.theme) &&
+    'player' in value &&
+    isPlayerColor(value.player) &&
+    'size' in value &&
+    isBoardSize(value.size)
+  );
 }
 
 export function isThemeId(value: unknown): value is ThemeId {
