@@ -7,11 +7,10 @@
     height: var(--footer-h);
     color: inherit;
 
-    // The home screen fills the viewport by design, so the footer floats over it
-    // instead of claiming a row. It sits right to stay clear of the controller.
+
     &--overlay {
         position: fixed;
-        right: 0;
+        right: 38%;
         bottom: 0;
         padding-right: 10vw;
 
