@@ -36,19 +36,16 @@
     &__face {
         position: absolute;
         inset: 0;
-        border-radius: 12px;
         background-position: center;
         background-repeat: no-repeat;
         background-size: contain;
         backface-visibility: hidden;
     }
 
-    // The cover art fills the whole card, so it needs no card stock behind it.
     &__face--front {
         background-size: cover;
     }
 
-    // The motif sits on the light card stock.
     &__face--back {
         background-color: #f6f1f3;
         transform: rotateY(180deg);

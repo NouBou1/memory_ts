@@ -76,6 +76,8 @@ function initExitDialog() {
 }
 
 function applyTheme() {
+  document.body.dataset.theme = THEME.id;
+
   applyThemeColors();
   applyCardMetrics();
   applyPlayerIcon();

@@ -1,23 +1,32 @@
 @use '../abstracts/breakpoints' as *;
+@use '../abstracts/mixins' as *;
 
 .score {
+    --score-fill: color-mix(in srgb, var(--accent, #4dd5bc) 20%, transparent);
+    --score-radius: 0;
+    --score-pad-y: 17px;
+    --score-pad-x: 20px;
+
     display: flex;
     align-items: center;
     gap: 20px;
-    padding: 8px 16px;
-    border-radius: 12px;
-    background-color: #f6f1f3;
-    color: var(--color-text-dark);
+    padding: var(--score-pad-y) var(--score-pad-x);
+    background-color: var(--score-fill);
+    border-radius: var(--score-radius);
+    color: var(--color-text-light);
 
     @include until($tablet) {
-        gap: 12px;
-        padding: 6px 12px;
+        --score-pad-y: 12px;
+        --score-pad-x: 16px;
+
+        gap: 14px;
     }
 
     @include until($mobile) {
+        --score-pad-y: 9px;
+        --score-pad-x: 12px;
+
         gap: 10px;
-        padding: 6px 8px;
-        border-radius: 10px;
     }
 
     &__item {
@@ -30,10 +39,13 @@
         }
     }
 
+    &__name,
     &__value {
         font-family: var(--font-display);
         font-size: 26px;
         font-weight: 700;
+
+        line-height: 1.08;
 
         @include until($tablet) {
             font-size: 22px;
@@ -42,6 +54,14 @@
         @include until($mobile) {
             font-size: 18px;
         }
+    }
+
+    &__name--blue {
+        color: var(--player-blue);
+    }
+
+    &__name--orange {
+        color: var(--player-orange);
     }
 
     &__pawn {
@@ -68,5 +88,39 @@
 
     &__pawn--orange {
         background-color: var(--player-orange);
+    }
+}
+
+[data-theme='gaming'] {
+    .score {
+        --score-fill: #ffffff;
+        --score-radius: 10px;
+
+        color: var(--color-text-dark);
+
+        --score-pad-y: 12px;
+        --score-pad-x: 16px;
+
+        @include until($tablet) {
+            --score-pad-y: 10px;
+            --score-pad-x: 14px;
+        }
+
+        @include until($mobile) {
+            --score-pad-y: 8px;
+            --score-pad-x: 10px;
+        }
+    }
+
+    .score__name {
+        @include visually-hidden;
+    }
+
+    .score__value--blue {
+        color: var(--player-blue);
+    }
+
+    .score__value--orange {
+        color: var(--player-orange);
     }
 }

@@ -10,10 +10,10 @@
 
 .game {
     --board-width: 1440px;
-    --pad-x: 40px;
+    --pad-x: 112px;
     --pad-y: 32px;
     --gap: 32px;
-    --topbar-h: 90px;
+    --topbar-h: 62px;
 
     display: flex;
     flex-direction: column;
@@ -29,50 +29,54 @@
     }
 
     @include until($notebook) {
-        --pad-x: 24px;
+        --pad-x: 64px;
         --pad-y: 24px;
         --gap: 24px;
-        --topbar-h: 82px;
     }
 
     @include until($tablet) {
-        --pad-x: 16px;
+        --pad-x: 32px;
         --pad-y: 16px;
         --gap: 16px;
-        --topbar-h: 72px;
+        --topbar-h: 48px;
     }
 
     @include until($mobile) {
-        --pad-x: 12px;
+        --pad-x: 16px;
         --pad-y: 12px;
         --gap: 12px;
-        --topbar-h: 64px;
+        --topbar-h: 38px;
+    }
+
+    @include until($mobile-small) {
+        --pad-x: 12px;
     }
 }
 
 .topbar {
+    --topbar-fill: transparent;
+    --topbar-radius: 0;
+    --topbar-pad-y: 0;
+    --topbar-pad-x: 0;
+
     display: flex;
     align-items: center;
     justify-content: space-between;
     gap: 24px;
-    padding: 16px 24px;
-    border-radius: 16px;
-    background-color: rgb(255 255 255 / 12%);
+    padding: var(--topbar-pad-y) var(--topbar-pad-x);
+    background-color: var(--topbar-fill);
+    border-radius: var(--topbar-radius);
 
     @include until($notebook) {
         gap: 16px;
-        padding: 12px 20px;
     }
 
     @include until($tablet) {
         gap: 12px;
-        padding: 10px 16px;
-        border-radius: 12px;
     }
 
     @include until($mobile) {
         gap: 8px;
-        padding: 8px 10px;
     }
 
     &__current {
@@ -100,8 +104,8 @@
 }
 
 .field {
-    --gap-x: 16px;
-    --gap-y: 24px;
+    --gap-x: 6px;
+    --gap-y: 6px;
     --avail-h: calc(100dvh - var(--pad-y) * 2 - var(--gap) * 2 - var(--topbar-h) - var(--footer-h));
     --avail-w: calc(min(100vw, var(--board-width)) - var(--pad-x) * 2);
     --card-height: min(
@@ -119,23 +123,49 @@
     flex: 1;
     min-height: 0;
 
-    @include until($notebook) {
-        --gap-x: 12px;
-        --gap-y: 16px;
-    }
-
     @include until($tablet) {
-        --gap-x: 10px;
-        --gap-y: 12px;
+        --gap-x: 5px;
+        --gap-y: 5px;
     }
 
     @include until($mobile) {
-        --gap-x: 8px;
-        --gap-y: 10px;
+        --gap-x: 4px;
+        --gap-y: 4px;
     }
 
     @include until($mobile-small) {
-        --gap-x: 6px;
-        --gap-y: 8px;
+        --gap-x: 3px;
+        --gap-y: 3px;
+    }
+}
+
+[data-theme='gaming'] {
+    .game {
+        --topbar-h: 102px;
+
+        @include until($tablet) {
+            --topbar-h: 80px;
+        }
+
+        @include until($mobile) {
+            --topbar-h: 62px;
+        }
+    }
+
+    .topbar {
+        --topbar-fill: rgb(253 150 201 / 20%);
+        --topbar-radius: 10px;
+        --topbar-pad-y: 24px;
+        --topbar-pad-x: 24px;
+
+        @include until($tablet) {
+            --topbar-pad-y: 16px;
+            --topbar-pad-x: 16px;
+        }
+
+        @include until($mobile) {
+            --topbar-pad-y: 12px;
+            --topbar-pad-x: 12px;
+        }
     }
 }

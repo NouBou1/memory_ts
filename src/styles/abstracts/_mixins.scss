@@ -1,4 +1,3 @@
-// Hides an element visually while keeping it available to screen readers.
 @mixin visually-hidden {
     position: absolute;
     width: 1px;
