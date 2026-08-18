@@ -18,6 +18,7 @@ function init() {
   const formRef = document.getElementById('settings-form');
   const startRef = document.getElementById('start');
 
+  preloadPreviews();
   updatePreview();
 
   if (formRef instanceof HTMLFormElement && startRef instanceof HTMLButtonElement) {
@@ -26,6 +27,8 @@ function init() {
 }
 
 function bindForm(formRef: HTMLFormElement, startRef: HTMLButtonElement) {
+  bindThemePreview(formRef);
+
   formRef.addEventListener('change', () => {
     readChoice(formRef);
     updateSummary();
@@ -60,9 +63,32 @@ function updateSummary() {
   setText('summary-size', choice.size ? `Board-${choice.size} Cards` : 'Board size');
 }
 
-function updatePreview() {
-  const theme = THEMES[choice.theme ?? DEFAULT_THEME];
+function bindThemePreview(formRef: HTMLFormElement) {
+  const inputs = formRef.querySelectorAll<HTMLInputElement>('input[name="theme"]');
+
+  inputs.forEach(input => {
+    const row = input.closest<HTMLElement>('.option__row');
+    const themeId = input.value;
+    if (!row || !isThemeId(themeId)) {
+      return;
+    }
+
+    row.addEventListener('mouseenter', () => updatePreview(themeId));
+    row.addEventListener('mouseleave', () => updatePreview());
+    input.addEventListener('focus', () => updatePreview(themeId));
+    input.addEventListener('blur', () => updatePreview());
+  });
+}
+
+function updatePreview(hovered?: ThemeId) {
+  const theme = THEMES[hovered ?? choice.theme ?? DEFAULT_THEME];
   setImage('preview', theme.preview);
+}
+
+function preloadPreviews() {
+  Object.values(THEMES).forEach(theme => {
+    new Image().src = theme.preview;
+  });
 }
 
 function isComplete(value: Partial<GameSettings>): value is GameSettings {

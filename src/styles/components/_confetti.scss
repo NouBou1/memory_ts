@@ -11,11 +11,11 @@
 }
 
 .confetti {
-    position: absolute;
+    position: fixed;
     top: 0;
     left: 0;
     right: 0;
-    height: 40%;
+    height: 40dvh;
     overflow: hidden;
     pointer-events: none;
 

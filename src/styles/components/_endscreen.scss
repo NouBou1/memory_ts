@@ -30,7 +30,7 @@
     }
 
     &__title--big {
-        font-size: 96px;
+        font-size: 110px;
         letter-spacing: 0.04em;
 
         @include until($tablet) {
@@ -40,6 +40,11 @@
         @include until($mobile) {
             font-size: 48px;
         }
+    }
+
+    &__title--gameover {
+        font-size: clamp(40px, 8.6vw, 124px);
+        line-height: 1;
     }
 
     &__title--blue {
@@ -90,6 +95,19 @@
         mask-repeat: no-repeat;
         mask-position: center;
         -webkit-mask-image: url('../../assets/icons/chess_pawn.svg');
+        -webkit-mask-size: contain;
+        -webkit-mask-repeat: no-repeat;
+        -webkit-mask-position: center;
+    }
+
+    &__art--scale {
+        width: min(353px, 70vw);
+        background-color: var(--accent, #4dd5bc);
+        mask-image: url('../../assets/icons/scale.svg');
+        mask-size: contain;
+        mask-repeat: no-repeat;
+        mask-position: center;
+        -webkit-mask-image: url('../../assets/icons/scale.svg');
         -webkit-mask-size: contain;
         -webkit-mask-repeat: no-repeat;
         -webkit-mask-position: center;
@@ -187,5 +205,13 @@
     &__button:active {
         transform: translateY(0);
         box-shadow: 0 2px 6px rgb(0 0 0 / 25%);
+    }
+}
+
+[data-theme='gaming'] {
+    .endscreen__title--gameover {
+        font-weight: 900;
+        letter-spacing: 0.07em;
+        text-transform: uppercase;
     }
 }

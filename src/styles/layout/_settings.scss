@@ -197,6 +197,10 @@
             transform: scale(1);
         }
 
+        .option--theme .option__row:hover &::after {
+            transform: scale(1);
+        }
+
         &:focus-visible {
             outline: 2px solid var(--color-yellow);
             outline-offset: 2px;
@@ -211,12 +215,14 @@
         }
     }
 
-    &__input:checked + &__label {
+    &__input:checked + &__label,
+    &--theme &__row:hover &__input + &__label {
         position: relative;
         text-shadow: 0.4px 0 0 currentColor;
     }
 
-    &__input:checked + &__label::after {
+    &__input:checked + &__label::after,
+    &--theme &__row:hover &__input + &__label::after {
         content: '';
         position: absolute;
         left: calc(100% + 12px);
@@ -232,7 +238,8 @@
         }
     }
 
-    &__input:checked + &__label::before {
+    &__input:checked + &__label::before,
+    &--theme &__row:hover &__input + &__label::before {
         content: '';
         position: absolute;
         left: calc(100% + 63px);
@@ -249,6 +256,15 @@
             height: 8px;
             margin-top: -4px;
         }
+    }
+
+    &--theme:has(.option__row:hover) &__row:not(:hover) &__input:checked + &__label::after,
+    &--theme:has(.option__row:hover) &__row:not(:hover) &__input:checked + &__label::before {
+        display: none;
+    }
+
+    &--theme:has(&__row:hover) &__row:not(:hover) &__input:checked::after {
+        transform: scale(0);
     }
 }
 

@@ -20,6 +20,7 @@ const RESULT_ART_CLASSES = [
   'endscreen__art--pawn',
   'endscreen__art--blue',
   'endscreen__art--orange',
+  'endscreen__art--scale',
 ];
 
 const settings = loadSettings();
@@ -212,6 +213,7 @@ function showDraw() {
   setText('result-label', "it's a");
   setText('result-title', 'DRAW');
   document.getElementById('result-title')?.classList.add('endscreen__title--big');
+  document.getElementById('result-art')?.classList.add('endscreen__art--scale');
 }
 
 function showWinner(winner: PlayerColor) {

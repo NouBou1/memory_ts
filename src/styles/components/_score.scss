@@ -56,6 +56,13 @@
         }
     }
 
+    &__value {
+        min-width: 2ch;
+        text-align: center;
+        font-variant-numeric: tabular-nums;
+        font-feature-settings: 'tnum' 1;
+    }
+
     &__name--blue {
         color: var(--player-blue);
     }
