@@ -11,3 +11,7 @@
     --content-max: 1920px;
     --footer-h: 44px;
 }
+
+[data-theme='gaming'] {
+    --font-display: 'Orbitron', var(--font-base);
+}
