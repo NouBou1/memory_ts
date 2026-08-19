@@ -6,7 +6,7 @@
   "out": "docs",
   "name": "Memory",
   "lang": "en",
-  "readme": "none",
+  "readme": "README.md",
   "githubPages": false,
   "excludePrivate": false,
   "excludeInternal": false,
