@@ -1,0 +1,20 @@
+{
+  "$schema": "https://typedoc.org/schema.json",
+  "entryPoints": ["src"],
+  "entryPointStrategy": "expand",
+  "exclude": ["src/**/*.d.ts"],
+  "out": "docs",
+  "name": "Memory",
+  "lang": "en",
+  "readme": "none",
+  "githubPages": false,
+  "excludePrivate": false,
+  "excludeInternal": false,
+  "categorizeByGroup": true,
+  "sort": ["source-order"],
+  "validation": {
+    "notExported": true,
+    "invalidLink": true,
+    "notDocumented": true
+  }
+}

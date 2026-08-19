@@ -7,11 +7,14 @@
     "dev": "vite",
     "build": "tsc --noEmit && vite build",
     "preview": "vite preview",
-    "typecheck": "tsc --noEmit"
+    "typecheck": "tsc --noEmit",
+    "docs": "typedoc",
+    "docs:watch": "typedoc --watch"
   },
   "devDependencies": {
     "@types/node": "^26.2.0",
     "sass": "^1.102.0",
+    "typedoc": "^0.28.20",
     "typescript": "^5.9.3",
     "vite": "^7.3.6"
   },

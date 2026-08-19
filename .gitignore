@@ -17,3 +17,6 @@ npm-debug.log*
 
 # Screenshot der Figma-Datei, kein Asset - noch nicht entschieden, ob er weg kann
 src/assets/icons/image.png
+
+# Generierte TypeDoc-Ausgabe, wird mit "npm run docs" neu erzeugt
+docs/
