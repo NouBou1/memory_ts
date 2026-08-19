@@ -24,18 +24,11 @@ import {
   type GameSettings,
 } from './data/settings-store';
 
-/** Theme whose preview is visible before anything has been picked. */
 const DEFAULT_THEME: ThemeId = 'code-vibes';
 
-/**
- * The selection made so far.
- *
- * `Partial`, because nothing is settled at the start. Only once
- * {@link isComplete} agrees is it a full {@link GameSettings}.
- */
 const choice: Partial<GameSettings> = {};
 
-init();
+window.addEventListener('load', init);
 
 /**
  * Sets up the page.
@@ -172,7 +165,7 @@ function preloadPreviews() {
  * Checks whether all three decisions have been made.
  *
  * @param value - Selection so far
- * @returns Type guard for a complete {@link GameSettings}
+ * @returns Type guard for a complete `GameSettings`
  */
 function isComplete(value: Partial<GameSettings>): value is GameSettings {
   return value.theme !== undefined && value.player !== undefined && value.size !== undefined;

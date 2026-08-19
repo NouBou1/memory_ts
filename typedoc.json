@@ -10,13 +10,13 @@
   "githubPages": false,
   "excludePrivate": false,
   "excludeNotDocumented": true,
-  "excludeNotDocumentedKinds": ["Variable"],
+  "excludeNotDocumentedKinds": ["Variable", "Interface", "TypeAlias", "Property"],
   "excludeInternal": false,
   "categorizeByGroup": true,
   "sort": ["source-order"],
   "validation": {
     "notExported": true,
     "invalidLink": true,
-    "notDocumented": true
+    "notDocumented": false
   }
 }

@@ -2,7 +2,7 @@
  * Game logic of the memory game.
  *
  * These functions know nothing about the DOM or about theme rendering: they
- * only create and mutate a {@link GameState}. How the outcome is displayed is
+ * only create and mutate a `GameState`. How the outcome is displayed is
  * left to the caller.
  *
  * All state changes happen in place on the object passed in.

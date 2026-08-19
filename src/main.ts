@@ -22,23 +22,18 @@ import { loadSettings } from './data/settings-store';
 import { CONFETTI } from './data/confetti';
 import type { FlipResult, PlayerColor } from './types/card';
 
-/** How long a non-matching pair stays visible, in milliseconds. */
 const MISMATCH_DELAY = 900;
 
-/** How long the interstitial screen shows before the winner appears. */
 const GAMEOVER_DELAY = 2500;
 
-/** Short pause after the last pair, so the flip animation can finish. */
 const WIN_DELAY = 400;
 
-/** Every title variant of the end screen, collected for resetting. */
 const RESULT_TITLE_CLASSES = [
   'endscreen__title--big',
   'endscreen__title--blue',
   'endscreen__title--orange',
 ];
 
-/** Every artwork variant of the end screen, collected for resetting. */
 const RESULT_ART_CLASSES = [
   'endscreen__art--pawn',
   'endscreen__art--blue',
@@ -46,26 +41,17 @@ const RESULT_ART_CLASSES = [
   'endscreen__art--scale',
 ];
 
-/** Selection made on the settings page, or `null` when the game page is opened directly. */
 const settings = loadSettings();
 
-/** Active theme; falls back to `code-vibes` without a stored selection. */
 const THEME = THEMES[settings ? settings.theme : 'code-vibes'];
 
-/** Board size of this game; falls back to the small board. */
 const SIZE = settings ? settings.size : 16;
 
-/** Starting player; falls back to blue. */
 const START_PLAYER = settings ? settings.player : 'blue';
 
-/**
- * State of the running game.
- *
- * Not `const`, because {@link restartGame} assigns a whole new game.
- */
 let state = createGame(THEME, SIZE, START_PLAYER);
 
-init();
+window.addEventListener('load', init);
 
 /**
  * Sets up the page.

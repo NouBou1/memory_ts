@@ -16,19 +16,12 @@ import type { ThemeId } from './themes';
 
 export type { PlayerColor };
 
-/** The three decisions taken before a game starts. */
 export interface GameSettings {
-  /** Selected theme. */
   theme: ThemeId;
-
-  /** Player who begins. */
   player: PlayerColor;
-
-  /** Number of cards on the board. */
   size: BoardSize;
 }
 
-/** Key under which the settings live in `sessionStorage`. */
 const STORAGE_KEY = 'memory-settings';
 
 /**
@@ -76,7 +69,7 @@ function parseSettings(raw: string): unknown {
  * Checks whether an arbitrary value holds complete settings.
  *
  * @param value - Value to check
- * @returns Type guard for {@link GameSettings}
+ * @returns Type guard for `GameSettings`
  */
 function isGameSettings(value: unknown): value is GameSettings {
   return (
@@ -95,7 +88,7 @@ function isGameSettings(value: unknown): value is GameSettings {
  * Checks whether a value is a known theme id.
  *
  * @param value - Value to check
- * @returns Type guard for {@link ThemeId}
+ * @returns Type guard for `ThemeId`
  */
 export function isThemeId(value: unknown): value is ThemeId {
   return value === 'code-vibes' || value === 'gaming';
@@ -105,7 +98,7 @@ export function isThemeId(value: unknown): value is ThemeId {
  * Checks whether a value is a valid player color.
  *
  * @param value - Value to check
- * @returns Type guard for {@link PlayerColor}
+ * @returns Type guard for `PlayerColor`
  */
 export function isPlayerColor(value: unknown): value is PlayerColor {
   return value === 'blue' || value === 'orange';
@@ -115,7 +108,7 @@ export function isPlayerColor(value: unknown): value is PlayerColor {
  * Checks whether a value is one of the offered board sizes.
  *
  * @param value - Value to check, typically taken from a form field
- * @returns Type guard for {@link BoardSize}
+ * @returns Type guard for `BoardSize`
  */
 export function isBoardSize(value: unknown): value is BoardSize {
   return value === 16 || value === 24 || value === 36;

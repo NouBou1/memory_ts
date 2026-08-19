@@ -57,73 +57,28 @@ import trophy from '../assets/images/winner/trophy.svg';
 import chessPawn from '../assets/icons/chess_pawn.svg';
 import playerLabel from '../assets/images/label.svg';
 
-/**
- * Ids of the available themes.
- *
- * Doubles as the value of `data-theme` on the `<body>`, which is how the
- * stylesheet selects the matching rules.
- */
 export type ThemeId = 'code-vibes' | 'gaming';
 
-/**
- * Full description of one game world.
- *
- * `readonly` throughout: themes are configuration and are never modified at
- * runtime.
- */
 export interface Theme {
-  /** Unique id, identical to the key in `THEMES`. */
   readonly id: ThemeId;
-
-  /** Display name shown in the settings summary. */
   readonly label: string;
-
-  /** Image path of the card back, identical for every card of the theme. */
   readonly back: string;
-
-  /** Preview image the settings page shows while choosing. */
   readonly preview: string;
-
-  /** Background gradient as a `[from, to]` pair. */
   readonly background: readonly [string, string];
-
-  /** Accent color for borders and highlights. */
   readonly accent: string;
-
-  /** Darker variant of the accent color, for shadows and depth. */
   readonly accentDark: string;
-
-  /** Image path for the winner area, or `null` to use the CSS-drawn figure. */
   readonly winnerImage: string | null;
-
-  /** Whether confetti is shown on a win. */
   readonly hasConfetti: boolean;
-
-  /** Whether the winner's name is rendered in uppercase. */
   readonly winnerUppercase: boolean;
-
-  /** Label and style variant of the button leading back to the start page. */
   readonly endButton: {
-    /** Text on the button. */
     readonly label: string;
-
-    /** Appearance: filled, or outline only. */
     readonly style: 'solid' | 'ghost';
   };
-
-  /** Card proportions as `[width, height]` in pixels. */
   readonly cardSize: readonly [number, number];
-
-  /** Icon marking the active player, along with its display size. */
   readonly playerIcon: {
-    /** Image path of the icon. */
     readonly src: string;
-
-    /** Display size as `[width, height]` in pixels. */
     readonly size: readonly [number, number];
   };
-
-  /** Available card motifs. Must supply at least 18 entries for the largest board. */
   readonly motifs: readonly string[];
 }
 
