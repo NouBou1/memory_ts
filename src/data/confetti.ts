@@ -17,9 +17,4 @@ import c7 from '../assets/images/confetti/confetti-7.svg';
 import c7b from '../assets/images/confetti/confetti-7-1.svg';
 import c8 from '../assets/images/confetti/confetti-8.svg';
 
-/**
- * All confetti motifs in display order.
- *
- * Each piece is positioned by its index, so the order is not arbitrary.
- */
 export const CONFETTI: readonly string[] = [c1, c2, c3, c4, c5, c6, c7, c7b, c8];

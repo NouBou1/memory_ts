@@ -3,7 +3,7 @@
  *
  * A theme bundles everything that differs between the variants: motifs, colors,
  * card proportions and the wording of the end screen. A new theme is just
- * another entry in {@link THEMES}, with no change to the game logic.
+ * another entry in `THEMES`, with no change to the game logic.
  *
  * The image paths are resolved and hashed by Vite at build time, which is why
  * they are imported instead of hard-coded as strings.
@@ -72,7 +72,7 @@ export type ThemeId = 'code-vibes' | 'gaming';
  * runtime.
  */
 export interface Theme {
-  /** Unique id, identical to the key in {@link THEMES}. */
+  /** Unique id, identical to the key in `THEMES`. */
   readonly id: ThemeId;
 
   /** Display name shown in the settings summary. */
@@ -127,12 +127,6 @@ export interface Theme {
   readonly motifs: readonly string[];
 }
 
-/**
- * All themes, looked up by their {@link ThemeId}.
- *
- * Typed as a `Record` so that adding a value to {@link ThemeId} without a
- * matching entry here raises a type error straight away.
- */
 export const THEMES: Record<ThemeId, Theme> = {
   'code-vibes': {
     id: 'code-vibes',

@@ -9,6 +9,8 @@
   "readme": "README.md",
   "githubPages": false,
   "excludePrivate": false,
+  "excludeNotDocumented": true,
+  "excludeNotDocumentedKinds": ["Variable"],
   "excludeInternal": false,
   "categorizeByGroup": true,
   "sort": ["source-order"],
