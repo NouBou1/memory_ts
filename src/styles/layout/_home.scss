@@ -17,7 +17,7 @@
     &::before {
         content: '';
         position: absolute;
-        left: 0px;
+        left: -80px;
         bottom: 10px;
         width: 400px;
         height: 700px;
@@ -40,6 +40,10 @@
             width: min(620px, 80vw);
             height: min(700px, 45vh);
         }
+    }
+
+    @include from($widescreen) {
+        overflow: visible;
     }
 
     @include until($tablet) {
